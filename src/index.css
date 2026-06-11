@@ -1,0 +1,92 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  :root[data-theme="light"] {
+    --color-background: 246 248 252;
+    --color-surface: 255 255 255;
+    --color-surface-hover: 238 242 247;
+    --color-border: 211 218 229;
+    --color-primary: 37 99 235;
+    --color-primary-glow: 37 99 235;
+    --color-secondary: 8 145 178;
+    --color-accent: 219 39 119;
+    --color-text-main: 15 23 42;
+    --color-text-muted: 100 116 139;
+    --terminal-background: #fcfceb;
+    --terminal-foreground: #1e293b;
+    --terminal-selection: rgba(37, 99, 235, 0.22);
+    --scrollbar-thumb: #cbd5e1;
+    --scrollbar-thumb-hover: #94a3b8;
+  }
+
+  :root[data-theme="dark"] {
+    --color-background: 10 10 15;
+    --color-surface: 18 18 26;
+    --color-surface-hover: 26 26 36;
+    --color-border: 42 42 53;
+    --color-primary: 79 70 229;
+    --color-primary-glow: 79 70 229;
+    --color-secondary: 6 182 212;
+    --color-accent: 236 72 153;
+    --color-text-main: 243 244 246;
+    --color-text-muted: 156 163 175;
+    --terminal-background: #000000;
+    --terminal-foreground: #f3f4f6;
+    --terminal-selection: rgba(79, 70, 229, 0.30);
+    --scrollbar-thumb: #2a2a35;
+    --scrollbar-thumb-hover: #3f3f50;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-textMain antialiased overflow-hidden selection:bg-primary/30;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-surface/75 backdrop-blur-md border border-border shadow-lg;
+  }
+
+  .glass-input {
+    @apply bg-background/60 border border-border rounded-lg px-4 py-2 text-textMain placeholder:text-textMuted/70 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primaryGlow transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-secondary text-white font-medium py-2 px-4 rounded-lg hover:shadow-glow hover:opacity-90 transition-all duration-300 active:scale-95 disabled:cursor-not-allowed flex items-center justify-center gap-2;
+  }
+
+  .btn-ghost {
+    @apply text-textMuted hover:text-textMain hover:bg-surfaceHover px-3 py-1 rounded-md transition-colors duration-200;
+  }
+}
+
+.xterm .xterm-cursor-layer .xterm-cursor.xterm-cursor-underline {
+  transform: translateY(2px);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
